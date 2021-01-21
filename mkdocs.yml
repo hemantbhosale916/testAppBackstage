@@ -1,0 +1,8 @@
+site_name: "testAppBackstage"
+site_description: "a test app"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
