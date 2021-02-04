@@ -9,7 +9,7 @@ spec:
     displayName: Team SNI
     email: team-sni@example.com
     picture: https://example.com/groups/team-sni.jpeg
-  parent: backstage
+  parent: backstag
   children: []
 ---
 apiVersion: backstage.io/v1alpha1

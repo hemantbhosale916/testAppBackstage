@@ -9,7 +9,7 @@ spec:
     # Intentional no displayName for testing
     email: team-a@example.com
     picture: https://example.com/groups/team-a.jpeg
-  parent: backstage
+  parent: backstag
   children: []
 ---
 apiVersion: backstage.io/v1alpha1
