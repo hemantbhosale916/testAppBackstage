@@ -18,9 +18,9 @@ metadata:
   description: A collection of all SNI example Groups
 spec:
   targets:
-    - ./infrastructure-group.yaml
+    - ./infrastructur-group.yaml
     - ./boxoffice-group.yaml
-    - ./backstage-group.yaml
+    - ./backstag-group.yaml
     - ./team-a-group.yaml
     - ./team-sni-group.yaml
     - ./team-c-group.yaml
