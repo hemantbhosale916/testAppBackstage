@@ -10,4 +10,4 @@ spec:
     email: backstage@example.com
     picture: https://example.com/groups/backstage.jpeg
   parent: infrastructure
-  children: [team-a, team-b]
+  children: [team-a, team-sni]

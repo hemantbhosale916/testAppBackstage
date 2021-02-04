@@ -1,0 +1,57 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-sni
+  description: Team SNI
+spec:
+  type: team
+  profile:
+    displayName: Team SNI
+    email: team-sni@example.com
+    picture: https://example.com/groups/team-sni.jpeg
+  parent: backstage
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: sandeep.pareek
+spec:
+  profile:
+    displayName: Sandeep Pareek
+    email: sandeep.pareek@example.com
+    picture: https://example.com/staff/sandeep.jpeg
+  memberOf: [team-sni]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: Swapnil.pandkar
+spec:
+  profile:
+    displayName: Swapnil Pandkar
+    email: swapnil-pandkar@example.com
+    picture: https://example.com/staff/swapnil.jpeg
+  memberOf: [team-sni]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: deepak.naik
+spec:
+  profile:
+    displayName: Deepak Naik
+    email: deepak-naik@example.com
+    picture: https://example.com/staff/deepak.jpeg
+  memberOf: [team-sni]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: somya.sijaria
+spec:
+  profile:
+    displayName: Somya Sijaria
+    email: somya-sijaria@example.com
+    picture: https://example.com/staff/somya.jpeg
+  memberOf: [team-sni]
