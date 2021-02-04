@@ -9,7 +9,7 @@ spec:
     displayName: Schneider Corp
     email: info@schneider.com
     picture: https://images.contentstack.io/v3/assets/blt19eee321227f0eda/blt362c36738f21d787/5f80d1a5271ecf4a1a642fc4/Schneider_RGB_Register.svg
-  children: [infrastructure]
+  children: [infrastructur]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Location
