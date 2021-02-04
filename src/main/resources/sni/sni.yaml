@@ -1,0 +1,27 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: sni-corp
+  description: The sni-corp organization
+spec:
+  type: organization
+  profile:
+    displayName: Schneider Corp
+    email: info@schneider.com
+    picture: https://images.contentstack.io/v3/assets/blt19eee321227f0eda/blt362c36738f21d787/5f80d1a5271ecf4a1a642fc4/Schneider_RGB_Register.svg
+  children: [infrastructure]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: sni-groups
+  description: A collection of all SNI example Groups
+spec:
+  targets:
+    - ./infrastructure-group.yaml
+    - ./boxoffice-group.yaml
+    - ./backstage-group.yaml
+    - ./team-a-group.yaml
+    - ./team-b-group.yaml
+    - ./team-c-group.yaml
+    - ./team-d-group.yaml
