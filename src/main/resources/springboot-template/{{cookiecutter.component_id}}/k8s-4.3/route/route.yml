@@ -20,6 +20,6 @@ status:
     - conditions:
         - status: 'True'
           type: Admitted
-      host: {{cookiecutter.component_id | jsonify}}-{{ENV_SHORT_NAME}}-unt-test.ccc
+      host: {{cookiecutter.component_id | jsonify}}-unt-test.ccc
       routerName: router
       wildcardPolicy: None
