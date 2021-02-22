@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{cookiecutter.component_id | jsonify}}
+  labels:
+    app: service
+    name: {{cookiecutter.component_id | jsonify}}-svc
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    name: {{cookiecutter.component_id | jsonify}}
+    app: service

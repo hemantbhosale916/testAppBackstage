@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: obox-test-data-service
+  labels:
+    app: service
+    name: obox-test-data-service-cm
+
+data:
+  SNIBLD_RT_DB_sn2_URL1: {{DB_SNI_URL1}}
+  DB_sni_USERNAME_sni_guest: {{DB_sni_USERNAME_sni_guest}}
+  ENV_SHORT_NAME: {{ENV_SHORT_NAME}}
+
+ 

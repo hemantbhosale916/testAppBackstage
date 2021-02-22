@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: obox-test-data-service
+  labels:
+    app: service
+    name: obox-test-data-service-deployment
+spec:
+  replicas: {{REPLICA_COUNT}}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 300
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      name: obox-test-data-service
+      app: service
+  template:
+    metadata:
+      labels:
+        name: obox-test-data-service
+        app: service
+    spec:
+      containers:
+      - name: obox-test-data-service
+        image: {{SNI_NEXUS_DOCKER_REGISTRY_URL}}/{{ENV_SHORT_NAME}}/obox-test-data-service:{{IMAGE_VERSION}}
+        ports:
+          - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 550Mi
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 180
+          periodSeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 1
+        livenessProbe:
+          httpGet:
+            path: /alive
+            port: 8080
+          initialDelaySeconds: 180
+          periodSeconds: 60
+          timeoutSeconds: 5
+        envFrom:
+        - configMapRef:
+            name: obox-test-data-service
+        - secretRef:
+            name: obox-test-data-service
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: logback
+            mountPath: /etc/config/springboot
+      volumes:
+        - name: logback
+          configMap:
+            items:
+              - key: logback.xml
+                path: logback.xml
+            name: obox-test-data-service-logback
+      imagePullSecrets:
+      - name: {{SNI_NEXUS_DOCKER_REGISTRY_SECRET_NAME}}
