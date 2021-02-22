@@ -3,16 +3,16 @@ kind: Route
 metadata:
   labels:
     app: service
-    name: obox-test-data-service-route
-  name: obox-test-data-service
+    name: {{cookiecutter.component_id | jsonify}}-route
+  name: {{cookiecutter.component_id | jsonify}}
 spec:
-  host: obox-test-data-service-{{ENV_SHORT_NAME}}-{{NAMESPACE}}.{{OCP_URL_SUFFIX}}
+  host: {{cookiecutter.component_id | jsonify}}-unt-test.ccc
   tls:
     insecureEdgeTerminationPolicy: Allow
     termination: edge
   to:
     kind: Service
-    name: obox-test-data-service
+    name: {{cookiecutter.component_id | jsonify}}
     weight: 100
   wildcardPolicy: None
 status:
@@ -20,6 +20,6 @@ status:
     - conditions:
         - status: 'True'
           type: Admitted
-      host: obox-test-data-service-{{ENV_SHORT_NAME}}-{{NAMESPACE}}.{{OCP_URL_SUFFIX}}
+      host: {{cookiecutter.component_id | jsonify}}-{{ENV_SHORT_NAME}}-unt-test.ccc
       routerName: router
       wildcardPolicy: None

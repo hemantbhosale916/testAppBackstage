@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: obox-test-data-service
+  name: {{cookiecutter.component_id | jsonify}}
   labels:
     app: service
-    name: obox-test-data-service-deployment
+    name: {{cookiecutter.component_id | jsonify}}-deployment
 spec:
-  replicas: {{REPLICA_COUNT}}
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -16,17 +16,17 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      name: obox-test-data-service
+      name: {{cookiecutter.component_id | jsonify}}
       app: service
   template:
     metadata:
       labels:
-        name: obox-test-data-service
+        name: {{cookiecutter.component_id | jsonify}}
         app: service
     spec:
       containers:
-      - name: obox-test-data-service
-        image: {{SNI_NEXUS_DOCKER_REGISTRY_URL}}/{{ENV_SHORT_NAME}}/obox-test-data-service:{{IMAGE_VERSION}}
+      - name: {{cookiecutter.component_id | jsonify}}
+        image: nexus-url/unt/{{cookiecutter.component_id | jsonify}}:101
         ports:
           - containerPort: 8080
         resources:
@@ -53,9 +53,9 @@ spec:
           timeoutSeconds: 5
         envFrom:
         - configMapRef:
-            name: obox-test-data-service
+            name: {{cookiecutter.component_id | jsonify}}
         - secretRef:
-            name: obox-test-data-service
+            name: {{cookiecutter.component_id | jsonify}}
         imagePullPolicy: Always
         volumeMounts:
           - name: logback
@@ -66,6 +66,6 @@ spec:
             items:
               - key: logback.xml
                 path: logback.xml
-            name: obox-test-data-service-logback
+            name: {{cookiecutter.component_id | jsonify}}-logback
       imagePullSecrets:
-      - name: {{SNI_NEXUS_DOCKER_REGISTRY_SECRET_NAME}}
+      - name: registry-secret
