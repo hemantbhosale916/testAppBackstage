@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{cookiecutter.component_id | jsonify}}
+  name: {{cookiecutter.component_id}}
   labels:
     app: service
     name: {{cookiecutter.component_id | jsonify}}-cm
